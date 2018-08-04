@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ePrinter Installer</title>
+  <base href="./">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root>Loading...</app-root>
+
+  <script>
+    const printer = require('node-printer');
+    const installOption = 'install';
+    const uninstallOption = 'uninstall';
+    const sudo = require('sudo-prompt');
+    const nodePrinter = require('node-printer');
+    const electronExecutable = require('./assets/js/electronexecutable');
+    const p = require('path');
+    const serviceInstaller = p.join(__dirname, './assets/serviceinstaller');
+
+    const winston = require('winston');
+    const logger = winston.createLogger({
+      level: 'error',
+      format: winston.format.json(),
+      transports: [
+        new winston.transports.File({ filename: __dirname + '/error.log', level: 'error' }),
+      ]
+    });
+
+    logger.info('Holla');
+    window['log'] = logger;
+
+    window.appSettings = {
+      closeApp: () => {
+        const remote = require('electron').remote
+        let w = remote.getCurrentWindow()
+        w.close();
+      }
+    }
+
+    window.printer = {
+      getPrinters: () => {
+        return printer.list();
+      },
+
+      install: (email, printer, token, successCallBack, errCallBack) => {
+        const options = {
+            name: 'servicemanager'
+        };
+
+        let cmd = `${electronExecutable} ${serviceInstaller} ${installOption} "${printer}" "${email}" "${token}"`;
+        try {
+          sudo.exec(cmd, options, function(error, stdout, stderr) {
+            if (error) {
+              errCallBack(error);
+            } else {
+              successCallBack();
+            }
+          });
+        } catch (e) {
+          errCallBack(e);
+        }
+
+      }
+    };
+
+  </script>
+
+</body>
+</html>

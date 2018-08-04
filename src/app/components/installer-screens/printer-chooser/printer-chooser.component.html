@@ -1,0 +1,28 @@
+﻿<div class="printer-chooser-screen">
+  <form #f="ngForm">
+    <h3>your eprinter mailbox:
+      <label class="email">{{username}}</label>
+    </h3>
+
+    <p class="text-sm">Documents sent to this email address will be automatically printed to your connected printer.</p>
+    <div class="printers-wrapper">
+      <p class="text-sm">choose printer to connect to:</p>
+      <div class="form-check form-group" *ngFor="let printer of _printers">
+        <custom-radio>
+          <input type="radio" name="{{printer.id}}_printer" id="{{printer.id}}_printer" [value]="printer" [(ngModel)]="selectedPrinter">
+          <label class="form-check-label radio" for="{{printer.id}}_printer"> {{printer.name}}</label>
+        </custom-radio>
+      </div>
+    </div>
+    <div class="form-check form-group custom-checkbox">
+      <custom-checkbox>
+        Keep my computer awake all times.
+        <input type="checkbox" class="form-check-input" name="_awake" id="_awake" [(ngModel)]="_awake">
+      </custom-checkbox>
+    </div>
+
+    <p class="error" *ngIf="!selectedPrinter">
+      Please select a printer.
+    </p>
+  </form>
+</div>

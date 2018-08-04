@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'MYRIADPROREGULAR';
+  src: url('../src/assets/font/MYRIADPROREGULAR.eot');
+  src: local('../src/assets/font/MYRIADPROREGULAR'), url('../src/assets/font/MYRIADPROREGULAR.woff') format('woff'), url('../src/assets/font/MYRIADPROREGULAR.ttf') format('truetype');
+}
+
+@import '../../styles/common';
+@import "../node_modules/font-awesome/css/font-awesome.css";
+
+
+body,
+html {
+  /* width: 100%; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: MYRIADPROREGULAR;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #00AFEF;
+  border-radius: 0;
+}
+
+.btn-default {
+  border-radius: 0;
+}
+
+
+.form-control {
+  border-radius: 0;
+  height: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.bg-gray {
+  background-color: gray !important;
+}
+
+.bg-blue {
+  background-color: #00afef !important;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: black;
+  span {
+    margin-left: 5px;
+  }
+}
+.wrapper {
+  height: calc(100vh - 120px) !important;
+}

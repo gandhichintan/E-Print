@@ -1,0 +1,21 @@
+<div class="loading-container" *ngIf="loading">
+  <i class="fa fa-spinner fa-spin"></i> <span>{{loadingText}}</span>
+</div>
+<div class="installer-screens" [hidden]="loading">
+    <stepper>
+        <stepper-step hideTitle="true" [isValid]="!printIntroduction.isAlreadyInstalled">
+            <print-introduction></print-introduction>
+        </stepper-step>
+        <stepper-step title="Initial Setup" [isValid]="printerChooser.selectedPrinter && printerChooser.isUserNameValid && !printerChooser.isAlreadyInstalled">
+            <app-printer-chooser #printerChooser></app-printer-chooser>
+        </stepper-step>
+        <stepper-step title="Confirmation" [nextText]="error ? 'Try Again' : 'Install'" [onNext]="install">
+            <print-confirmation [error]="error"></print-confirmation>
+        </stepper-step>
+        <stepper-step title="Installation Finished" [onNext]="finish">
+            <finish-print-setup [printer]="printerChooser.selectedPrinter" [email]="printerChooser.email"></finish-print-setup>
+        </stepper-step>
+
+        <button class="print-cancel btn btn-danger" (click)="finish()">Cancel</button>
+    </stepper>
+</div>

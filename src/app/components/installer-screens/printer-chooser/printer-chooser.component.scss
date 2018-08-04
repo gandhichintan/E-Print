@@ -1,0 +1,27 @@
+:host {
+	.error {
+		color: red;
+	}
+
+	h3 {
+		font-weight: 300;
+	}
+
+	.email {
+		height: 30px !important;
+		width: 100px;
+	}
+
+	.email::placeholder {
+		color: gray;
+	}
+
+	.printers-wrapper {
+		padding-top: 10px;
+		max-height: 200px;
+		overflow: scroll;
+		.text-sm {
+			font-weight: 600;
+		}
+	}
+}

@@ -1,0 +1,5 @@
+<h3> Administrative permission is needed in order to install ePrinter service. </h3>
+<p>Once you clicked the Install button, please fill your password in the dialog box (in Mac computers) or confirm Yes (in Windows computer).</p>
+<p class="error" *ngIf="error">An Error occured during the installation. <i (click)="expanded = !expanded" [ngClass]="{'fa-minus-circle': expanded, 'fa-plus-circle': !expanded}" class="fa err-desc-toggle"></i> </p>
+
+<p class="error err-desc" [ngStyle]="{'display': expanded ? 'block' : 'none'}">{{error}}</p> 

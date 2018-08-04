@@ -1,0 +1,63 @@
+﻿:host {
+  .installer-screens {
+    width: 600px;
+    position: relative;
+    padding-bottom: 20px;
+    overflow-x: hidden;
+  }
+
+  /deep/ .next-btn {
+    position: relative;
+    left: 400px;
+  }
+
+  /deep/ stepper h3 {
+    font-weight: 300;
+  }
+
+  /deep/ p {
+    color: gray;
+  }
+
+  /deep/ .loader-container {
+    position: absolute;
+    left: 71%;
+    top: 50%;
+    z-index: 1;
+    text-align:center;
+  }
+
+  /deep/ .loader {
+    margin: -75px 0 0 0;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid pink;
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

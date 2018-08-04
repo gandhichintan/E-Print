@@ -1,0 +1,10 @@
+﻿<h3> Welcome to ePrinter. </h3>
+<p>ePrinter will make it simple to print from anywhere.</p>
+<p>Click Next to start installation process.</p>
+<p class="error err-desc" [ngStyle]="{'display': expanded ? 'block' : 'none'}">{{error}}</p>
+<div *ngIf="showProcessIndicator" class="loader-container">
+  <div>
+    <div class="loader"></div>
+  </div>
+  <p>Please wait...</p>
+</div>
